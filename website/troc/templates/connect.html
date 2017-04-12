@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Se Connecter</title>
+  </head>
+  <body class="overlay">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="/static/images/icone.ico" type="image/x-icon"/>
+    <link rel="icon" href="/static/images/icone.ico" type="image/x-icon"/>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="/troc/index">
+          <img src="/static/images/icone.ico" style="width:40px;height:40px;" href="/troc/index">
+        </a>
+        <a class="navbar-brand active" href="/troc/index">Swap</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+
+          {% if user.username  %} <!-- Je suis connecté -->
+
+          <li class="navbar-warpper"><a href="#">Déposer un Troc</a></li>
+          <li class="navbar-warpper"><a href="/troc/troc_search">Troquer</a></li>
+          <li class="navbar-warpper"><a href="#">Mes Trocs</a></li>
+          <li class="navbar-warpper"><a href="/troc/compte">Mon Compte</a></li>
+          <li class="navbar-warpper"><a href="/troc/deconnexion">Se Déconnecter</a></li>
+          {% else %}
+          <li class="navbar-warpper"><a href="/troc/connexion">Déposer un Troc</a></li>
+          <li class="navbar-warpper"><a href="/troc/troc_search">Troquer</a></li>
+          <li class="navbar-warpper"><a href="/troc/connexion">Mes Trocs</a></li>
+          <li class="navbar-warpper"><a href="/troc/connexion">Mon Compte</a></li>
+          <li class="navbar-warpper"><a href="/troc/register">S'inscrire</a></li>
+          {%endif%}
+
+        </ul>
+
+      </div>
+    </div>
+    </nav>
+    <div class="hero_reg">
+
+      {% if error %}
+      <w>Utilisateur inconnu ou mauvais mot de passe.</w>
+      {% endif %}
+
+      {% if user.is_authenticated %}
+      <h2>Vous êtes connecté </h2>
+      <h2>Bon Troc  {{ user.username }} !</h2>
+      <input type="button" class="btn btn-hero btn-lg active" name="Accueil" value="Accueil" onclick="self.location.href='/troc/index'">
+
+      <input type="button" class="btn btn-hero btn-lg active" name="deconnexion" value="Deconnexion" onclick="self.location.href='/troc/deconnexion'">
+      {% else %}
+      <h2> Veuillez vous connecter pour accéder aux services</h2>
+      <form action="." method="post">
+          {% csrf_token %}
+          <h3>{{ form.as_p }}</h3>
+          <input type="submit" class="btn btn-hero btn-lg active" value="Se connecter" />
+      </form>
+      <input type="submit" class="btn btn-hero btn-lg active" value="S'inscrire" onclick="self.location.href='/troc/register'">
+
+      {% endif %}
+      </div>
+  </body>
+</html>

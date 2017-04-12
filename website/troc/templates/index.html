@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% if user.username  %}
+    <title>Bienvenue {{ user.username }} ! </title>
+    {% else %}
+    <title>Swapez Vite! </title>
+    {%endif%}
+
+    <!--<link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <audio src="/static/sounds/music.ogg" autoplay></audio>
+    <link rel="shortcut icon" href="/static/images/icone.ico" type="image/x-icon"/>
+    <link rel="icon" href="/static/images/icone.ico" type="image/x-icon"/>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a href="/troc/index">
+          <img src="/static/images/icone.ico" style="width:40px;height:40px;" href="/troc/index">
+        </a>
+        <a class="navbar-brand active" href="/troc/index">Swap</a>
+      </div>
+
+      <div id="navbar" class="navbar-collapse collapse">
+
+        <ul class="nav navbar-nav">
+
+
+          {% if user.username  %}
+          <li class="navbar-warpper"><a href="#">Déposer un Troc</a></li>
+          <li class="navbar-warpper"><a href="/troc/troc_search">Troquer</a></li>
+          <li class="navbar-warpper"><a href="#">Mes Trocs</a></li>
+          <li class="navbar-warpper"><a href="/troc/compte">Mon Compte</a></li>
+          <li class="navbar-warpper"><a href="/troc/deconnexion">Se Déconnecter</a></li>
+          {% else %}
+          <li class="navbar-warpper"><a href="/troc/connexion">Déposer un Troc</a></li>
+          <li class="navbar-warpper"><a href="/troc/troc_search">Troquer</a></li>
+          <li class="navbar-warpper"><a href="/troc/connexion">Mes Trocs</a></li>
+          <li class="navbar-warpper"><a href="/troc/connexion">Mon Compte</a></li>
+          <li class="navbar-warpper"><a href="/troc/connexion">Se Connecter</a></li>
+          {%endif%}
+
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+  <body>
+    <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+
+      <ol class="carousel-indicators">
+
+        <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#bs-carousel" data-slide-to="1"></li>
+        <li data-target="#bs-carousel" data-slide-to="2"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item slides active">
+          <div class="slide-1"></div>
+          <div class="hero">
+            <hgroup>
+              {% if user.username  %}
+              <h1>Bienvenue {{ user.username }} ! </h1>
+              {% else %}
+                <h1> Bienvenue sur Swap</h1>
+              {%endif%}
+
+            </hgroup>
+            <a href="source/home.html" class="btn btn-hero btn-lg active" role="button" aria-pressed="true">Troquez Maintenant !>>></a>
+
+          </div>
+        </div>
+        <div class="item slides">
+          <div class="slide-2"></div>
+          <div class="hero">
+            <hgroup>
+                <h1>Une certaine idée du service</h1>
+                <h3>Commencez le Troc !</h3>
+            </hgroup>
+            <a href="source/home.html" class="btn btn-hero btn-lg active" role="button" aria-pressed="true">Troquez Maintenant ! >>></a>
+            </div>
+        </div>
+        <div class="item slides">
+          <div class="slide-3"></div>
+          <div class="hero">
+            <hgroup>
+                <h1>Rejoignez la communauté</h1>
+                <h3>Commencez le Troc !</h3>
+            </hgroup>
+            <a href="source/home.html" class="btn btn-hero btn-lg active" role="button" aria-pressed="true">Troquez Maintenant ! >>></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type=text/javascript  src="/static/js/script.js">
+    </script>
+  </body>
+</html>
